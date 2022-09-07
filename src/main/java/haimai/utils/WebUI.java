@@ -1,8 +1,12 @@
 package haimai.utils;
 
 //import dev.failsafe.internal.util.Assert;
+
 import haimai.driver.DriverManagerMe;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,7 +21,7 @@ public class WebUI {
     private final static double STEP_TIME = 0.5;
 
     private final static double PAGE_LOAD_TIMEOUT = 20;
- //   private static WebDriver driver;
+    //   private static WebDriver driver;
 
 
     public static WebElement getWebElement(By by) {
@@ -31,7 +35,7 @@ public class WebUI {
        }
      */
     public static void waitForPageLoaded() {
-        WebDriverWait wait = new WebDriverWait(DriverManagerMe.getDriver() Duration.ofSeconds((long) PAGE_LOAD_TIMEOUT), Duration.ofMillis(500));
+        WebDriverWait wait = new WebDriverWait(DriverManagerMe.getDriver(), Duration.ofSeconds((long) PAGE_LOAD_TIMEOUT), Duration.ofMillis(500));
         JavascriptExecutor js = (JavascriptExecutor) DriverManagerMe.getDriver();
 
         // wait for Javascript to loaded
@@ -54,15 +58,18 @@ public class WebUI {
             }
         }
     }
+
     public static void waitForElementVisible(By by) {
         WebDriverWait wait = new WebDriverWait(DriverManagerMe.getDriver(), Duration.ofSeconds(TIMEOUT));
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
+
     public static void waitForElementClickable(By by) {
         waitForPageLoaded();
         WebDriverWait wait = new WebDriverWait(DriverManagerMe.getDriver(), Duration.ofSeconds(TIMEOUT));
         wait.until(ExpectedConditions.elementToBeClickable(by));
     }
+
     public static void sleep(double second) {
         try {
             Thread.sleep((long) (200 * second));
@@ -88,10 +95,12 @@ public class WebUI {
 
         return DriverManagerMe.getDriver().getCurrentUrl().contains(url);
     }
+
     public static void scrollToElement(By element) {
         JavascriptExecutor js = (JavascriptExecutor) DriverManagerMe.getDriver();
         js.executeScript("arguments[0].scrollIntoView(true);", getWebElement(element));
     }
+
     public static WebElement highLightElement(By by) {
         // Tô màu border ngoài chính element chỉ định - màu đỏ (có thể đổi màu khác)
         if (DriverManagerMe.getDriver() instanceof JavascriptExecutor) {
@@ -100,6 +109,7 @@ public class WebUI {
         }
         return getWebElement(by);
     }
+
     public static void clearElement(By by) {
         waitForPageLoaded();
         waitForElementClickable(by);

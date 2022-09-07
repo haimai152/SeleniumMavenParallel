@@ -15,5 +15,11 @@
             <class name="haimai.testcases.LoginCMSTest"/>
         </classes>
     </test>
+    <test name="Regression Parallel Edge" parallel="methods">
+        <parameter name="browser" value="edge"></parameter>
+        <classes>
+            <class name="haimai.testcases.LoginCMSTest"/>
+        </classes>
+    </test>
 
 </suite>

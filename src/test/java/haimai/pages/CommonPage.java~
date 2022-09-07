@@ -60,21 +60,21 @@ public class CommonPage {
         clickProductMenu();
         WebUI.waitForElementClickable(addNewProduct);
         WebUI.clickElement(addNewProduct);
-        return new ProductPage();
+        return new ProductPage(driver);
     }
 
     public ProductPage clickAllProductMenu() {
         clickProductMenu();
         WebUI.waitForElementClickable(allProduct);
         WebUI.clickElement(allProduct);
-        return new ProductPage();
+        return new ProductPage(driver);
     }
 
     public CategoryPage openCategory() {
         clickProductMenu();
         WebUI.waitForElementClickable(categoryMenuItem);
         WebUI.clickElement(categoryMenuItem);
-        return new CategoryPage();
+        return new CategoryPage(driver);
     }
 
     public LoginCMSPage logout() {

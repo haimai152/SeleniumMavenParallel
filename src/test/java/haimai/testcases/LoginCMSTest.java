@@ -20,15 +20,15 @@ public class LoginCMSTest extends BaseTestParallel {
         loginCMSPage.verifyLogIn("abc@gmail.com", "123456");
     }
 
-//    @Test(priority = 2)
-//    public void inValidPassword() {
-//        loginCMSPage.verifyLogIn("maihaitdc@gmail.com", "123456789");
-//    }
-//
-//    @Test(priority = 3)
-//    public void inValidEmailPassword() {
-//        loginCMSPage.verifyLogIn("abc@gmail.com", "123456789");
-//    }
+    @Test(priority = 2)
+    public void inValidPassword() {
+        loginCMSPage.verifyLogIn("maihaitdc@gmail.com", "123456789");
+    }
+
+    @Test(priority = 3)
+    public void inValidEmailPassword() {
+        loginCMSPage.verifyLogIn("abc@gmail.com", "123456789");
+    }
 
     @Test(priority = 2)
     public void signIn_Valid() {
