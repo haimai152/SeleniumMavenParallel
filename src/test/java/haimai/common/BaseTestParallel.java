@@ -1,19 +1,21 @@
 package haimai.common;
 
 import haimai.driver.DriverManagerMe;
-import haimai.utils.WebUI;
+import haimai.helpers.PropertiesHelpers;
+import haimai.listeners.TestListener;
+import haimai.pages.CommonPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
-public class BaseTestParallel {
-
+@Listeners(TestListener.class)
+public class BaseTestParallel extends CommonPage {
+    public BaseTestParallel() {
+        PropertiesHelpers.loadAllFiles();
+    }
 
     @BeforeMethod
     @Parameters({"browser"})
@@ -21,7 +23,7 @@ public class BaseTestParallel {
         WebDriver driver = setupBrowser(browserName);
         DriverManagerMe.setDriver(driver);
         //  new WebUI(driver);
-        WebUI.openURL("https://ecommerce.anhtester.com");
+
 
     }
 

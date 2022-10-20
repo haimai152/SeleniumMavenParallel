@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+
 public class LoginCMSPage extends CommonPage {
 
     public LoginCMSPage() {
@@ -13,19 +14,20 @@ public class LoginCMSPage extends CommonPage {
     }
 
     private By loginLinkElement = By.xpath("//a[@class='text-reset d-inline-block opacity-60 py-2'][normalize-space()='Login']");
-    private By inputEmail = By.id("email");
-    private By inputPassword = By.name("password");
+    private By inputEmail = By.xpath("//input[@id='email']");
+    private By inputPassword = By.xpath("//input[@id='password']");
     private By loginButton = By.xpath("//button[normalize-space()='Login']");
     private By popup = By.xpath("//button[@data-key='website-popup' and @data-value='removed']");
     private By errorMsgText = By.xpath("//span[@data-notify='message']");
 
 
     public CommonPage logIn(String email, String password) {
-        WebUI.waitForPageLoaded();
-        WebUI.waitForElementClickable(popup);
-        popupClose();
-        WebUI.waitForElementClickable(loginLinkElement);
-        clickLoginLink();
+//        WebUI.waitForPageLoaded();
+//        WebUI.waitForElementClickable(popup);
+//        popupClose();
+//        WebUI.waitForElementClickable(loginLinkElement);
+//        clickLoginLink();
+        WebUI.openURL("https://demo.activeitzone.com/ecommerce/login");
         enterEmail(email);
         enterPassword(password);
         WebUI.waitForElementClickable(loginButton);
@@ -35,10 +37,11 @@ public class LoginCMSPage extends CommonPage {
     }
 
     public void verifyLogIn(String email, String password) {
-        WebUI.waitForElementClickable(popup);
-        popupClose();
-        WebUI.waitForElementClickable(loginLinkElement);
-        clickLoginLink();
+//        WebUI.waitForElementClickable(popup);
+//        popupClose();
+//        WebUI.waitForElementClickable(loginLinkElement);
+//        clickLoginLink();
+        WebUI.openURL("https://demo.activeitzone.com/ecommerce/login");
         enterEmail(email);
         enterPassword(password);
         WebUI.waitForElementClickable(loginButton);

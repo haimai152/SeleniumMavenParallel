@@ -2,7 +2,11 @@ package haimai.utils;
 
 //import dev.failsafe.internal.util.Assert;
 
+import com.aventstack.extentreports.Status;
 import haimai.driver.DriverManagerMe;
+import haimai.reports.AllureManager;
+import haimai.reports.ExtentTestManager;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -84,10 +88,14 @@ public class WebUI {
         System.out.println(message);
     }
 
+    @Step("Open URL: {0}")
     public static void openURL(String url) {
         DriverManagerMe.getDriver().get(url);
         sleep(STEP_TIME);
-        logConsole("Open: " + url);
+        Log.info("Open: " + url);
+        ExtentTestManager.logMessage(Status.PASS, "Open URL: " + url);
+
+        AllureManager.saveTextLog("Open: " + url);
         waitForPageLoaded();
     }
 
@@ -119,6 +127,7 @@ public class WebUI {
         DriverManagerMe.getDriver().findElement(by).clear();
     }
 
+    @Step("Click element: {0}")
     public static void clickElement(By by) {
         waitForPageLoaded();
         waitForElementVisible(by);
@@ -126,8 +135,12 @@ public class WebUI {
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         sleep(TIMEOUT);
         DriverManagerMe.getDriver().findElement(by).click();
+        Log.info("Click element: " + by);
+        ExtentTestManager.logMessage(Status.PASS, "Click element: " + by);
+        AllureManager.saveTextLog("Click element: " + by);
     }
 
+    @Step("Click element {0} with timeout {1}")
     public static void clickElement(By by, long timeout) {
         waitForPageLoaded();
         waitForElementVisible(by);
@@ -135,8 +148,11 @@ public class WebUI {
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         sleep(TIMEOUT);
         DriverManagerMe.getDriver().findElement(by).click();
+        Log.info("Clicked on element " + by);
+        ExtentTestManager.logMessage(Status.PASS, "Clicked on element " + by);
     }
 
+    @Step("Set text {1} on {0}")
     public static void setElementText(By by, String value) {
         waitForPageLoaded();
         waitForElementClickable(by);
@@ -144,8 +160,11 @@ public class WebUI {
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         sleep(TIMEOUT);
         DriverManagerMe.getDriver().findElement(by).sendKeys(value);
+        Log.info("Set text: " + value + "on element " + by);
+        ExtentTestManager.logMessage(Status.PASS, "Set text: " + value + " on element " + by);
     }
 
+    @Step("Get text of element {0}")
     public static String getElementText(By by) {
         waitForPageLoaded();
         waitForElementClickable(by);
@@ -153,7 +172,9 @@ public class WebUI {
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         sleep(STEP_TIME);
         String text = DriverManagerMe.getDriver().findElement(by).getText();
-        logConsole("Get text: " + text);
+        //  logConsole("Get text: " + text);
+        Log.info("Get text: " + text);
+        ExtentTestManager.logMessage(Status.PASS, "Get text: " + text);
         return text; //Trả về một giá trị kiểu String
     }
 
