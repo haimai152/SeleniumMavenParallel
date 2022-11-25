@@ -1,6 +1,7 @@
 # SeleniumMavenParallel
 The website to perform project is https://demo.activeitzone.com/ecommerce/
-The requirement of project as follows:
+
+#The requirement of project as follows:
 - Login Admin Page: check invaid email, invaid password and login success
 - Manage Brand, Manage Category, Manage Product trong Admin Page (Add, Edit, Delete,...)
 - Run full flow from: Login Admin Page > Add Brand > Add Category > Add Product
