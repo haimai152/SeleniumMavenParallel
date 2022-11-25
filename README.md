@@ -9,4 +9,5 @@ The website to perform project is https://demo.activeitzone.com/ecommerce/
 - Search Product check Table (cột tên)
 - Log, Report + Screenshot case fail (Allure or Extent)
 - Parallel Execution mỗi lần tối đa 4 thread các case độc lập (tuỳ sắp xếp cho phù hợp theo ý)
-TOBE CONTINUE ...
+
+#NOT DONE YET, WILL BE CONTINUED ... :)
