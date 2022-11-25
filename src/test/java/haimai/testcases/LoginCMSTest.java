@@ -77,4 +77,11 @@ public class LoginCMSTest extends BaseTestParallel {
     public void testDataProviderLoginExcelByRow(Hashtable<String, String> data) {
         loginCMSPage.verifyLogIn(data.get("username"), data.get("password"));
     }
+
+    //project cuối khóa
+    @Step("testLoginDataProviderFromExcelByRow")
+    @Test(priority = 9, dataProvider = "data_provider_login_from_excel_by_row", dataProviderClass = DataProviderManager.class)
+    public void testDataProviderLoginExcelByRowPrj(Hashtable<String, String> data) {
+        loginCMSPage.verifyLogIn_prj(data.get("username"), data.get("password"), data.get("type"));
+    }
 }

@@ -17,6 +17,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.List;
 
@@ -30,6 +32,10 @@ public class WebUI {
 
     public static WebElement getWebElement(By by) {
         return DriverManagerMe.getDriver().findElement(by);
+    }
+
+    public static List<WebElement> getWebElements(By by) {
+        return DriverManagerMe.getDriver().findElements(by);
     }
 
     /*
@@ -109,6 +115,11 @@ public class WebUI {
         js.executeScript("arguments[0].scrollIntoView(true);", getWebElement(element));
     }
 
+    public static void scrollToElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) DriverManagerMe.getDriver();
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
     public static WebElement highLightElement(By by) {
         // Tô màu border ngoài chính element chỉ định - màu đỏ (có thể đổi màu khác)
         if (DriverManagerMe.getDriver() instanceof JavascriptExecutor) {
@@ -159,7 +170,8 @@ public class WebUI {
 //        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         sleep(TIMEOUT);
-        DriverManagerMe.getDriver().findElement(by).sendKeys(value);
+        getWebElement(by).sendKeys(value);
+        //DriverManagerMe.getDriver().findElement(by).sendKeys(value);
         Log.info("Set text: " + value + "on element " + by);
         ExtentTestManager.logMessage(Status.PASS, "Set text: " + value + " on element " + by);
     }
@@ -196,6 +208,17 @@ public class WebUI {
         WebElement element = DriverManagerMe.getDriver().findElement(by);
         Actions action = new Actions(DriverManagerMe.getDriver());
         action.sendKeys(Keys.ENTER).build().perform();
+    }
+
+    public static boolean pressENTER() {
+        try {
+            Robot robot = new Robot();
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }

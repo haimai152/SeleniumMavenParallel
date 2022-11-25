@@ -37,21 +37,29 @@ public class LoginCMSPage extends CommonPage {
     }
 
     public void verifyLogIn(String email, String password) {
-//        WebUI.waitForElementClickable(popup);
-//        popupClose();
-//        WebUI.waitForElementClickable(loginLinkElement);
-//        clickLoginLink();
         WebUI.openURL("https://demo.activeitzone.com/ecommerce/login");
         enterEmail(email);
         enterPassword(password);
         WebUI.waitForElementClickable(loginButton);
         clickLoginButton();
-
         boolean checkAlertError = WebUI.checkElementExist(errorMsgText);
-        Assert.assertTrue(checkAlertError, "No error displays.");
+        Assert.assertTrue(checkAlertError, "login succeeds. No error displays.");
+        Assert.assertEquals(WebUI.getElementText(errorMsgText), "Invalid login credentials", "Input data is incorrect (Invalid email or password)");
+    }
 
-        Assert.assertEquals(WebUI.getElementText(errorMsgText), "Invalid login credentials", "Input data is incorrect");
-
+    //Verifylogin cuối khóa
+    public void verifyLogIn_prj(String email, String password, String type) {
+        WebUI.openURL("https://demo.activeitzone.com/ecommerce/login");
+        enterEmail(email);
+        enterPassword(password);
+        WebUI.waitForElementClickable(loginButton);
+        clickLoginButton();
+        boolean checkAlertError = WebUI.checkElementExist(errorMsgText);
+        if (type.equals("valid")) {
+            Assert.assertFalse(checkAlertError, "login succeeds. No error displays.");
+        } else {
+            Assert.assertEquals(WebUI.getElementText(errorMsgText), "Invalid login credentials", "Input data is incorrect (Invalid email or password)");
+        }
     }
 
     public String getErrorMessage() {
