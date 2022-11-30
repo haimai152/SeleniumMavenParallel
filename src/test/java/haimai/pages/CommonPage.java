@@ -19,6 +19,8 @@ public class CommonPage {
     private By addNewProduct = By.xpath("//span[normalize-space()='Add New Product']");
     private By categoryMenuItem = By.xpath("//span[normalize-space()='Category']");
 
+    private By brandMenuItem = By.xpath("//span[normalize-space()='Brand']");
+
     private By logoutProfile = By.xpath("//span[@class='d-block fw-500']");
     private By logoutButton = By.xpath("//span[normalize-space()='Logout']");
     private By allProduct = By.xpath("//span[normalize-space()='All products']");
@@ -75,6 +77,13 @@ public class CommonPage {
         WebUI.waitForElementClickable(categoryMenuItem);
         WebUI.clickElement(categoryMenuItem);
         return new CategoryPage();
+    }
+
+    public FPrjBrandPage openBrand() {
+        clickProductMenu();
+        WebUI.waitForElementClickable(brandMenuItem);
+        WebUI.clickElement(brandMenuItem);
+        return new FPrjBrandPage();
     }
 
     public LoginCMSPage logout() {

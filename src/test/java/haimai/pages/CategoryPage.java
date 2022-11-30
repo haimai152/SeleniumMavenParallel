@@ -1,6 +1,7 @@
 package haimai.pages;
 
 import haimai.datatest.CategoryData;
+import haimai.helpers.Helpers;
 import haimai.utils.WebUI;
 import org.openqa.selenium.By;
 
@@ -19,11 +20,13 @@ public class CategoryPage extends CommonPage {
     private By typeField = By.xpath("//button[@title='Physical']");
     private By typeSelect = By.xpath("//span[normalize-space()='Digital']");
     private By bannerField = By.xpath("(//div[contains(text(),'Choose File')])[1]");
+    private By chooseFile = By.xpath("//label[normalize-space()='Banner (200x200)']/following-sibling::div//div[normalize-space()='Choose file']");
     private By bannerSearchFile = By.xpath("//input[@placeholder='Search your files']");
     //private By bannerSearchFileEnter = By.xpath("//input[@placeholder='Search your files']");
     private By bannerClickFile = By.xpath("(//div[@class='card-file-thumb'])[1]");
     private By bannerSelectFile = By.xpath("//button[normalize-space()='Add Files']");
-    private By iconField = By.xpath("//div[@class='input-group']//div[normalize-space()='Choose File']");
+    //private By iconField = By.xpath("//div[@class='input-group']//div[normalize-space()='Choose File']");
+    private By iconField = By.xpath("//label[normalize-space()='Icon (32x32)']/following-sibling::div//div[normalize-space()='Choose file']");
     private By iconSearchFile = By.xpath("//input[@placeholder='Search your files']");
     // private By iconSearchFileEnter = By.xpath("//input[@placeholder='Search your files']");
     private By iconClickFile = By.xpath("(//div[@title='lake.jpg'])[1]");
@@ -55,15 +58,25 @@ public class CategoryPage extends CommonPage {
         WebUI.clickElement(typeField);
         WebUI.clickElement(typeSelect);
 
-        WebUI.clickElement(bannerField);
-        WebUI.setElementText(bannerSearchFile, "dautay_resized");
-        WebUI.clickElement(bannerClickFile);
-        WebUI.clickElement(bannerSelectFile);
+        WebUI.clickElement(chooseFile);
+//        WebUI.setElementText(bannerSearchFile, "dautay_resized");
+//        WebUI.clickElement(bannerClickFile);
+//        WebUI.clickElement(bannerSelectFile);
+
+        UploadFileCMSPage uploadFileCMSPage = new UploadFileCMSPage();
+        String filePathBanner = Helpers.getCurrentDir() + "src\\test\\java\\haimai\\datatest\\dautay_resized.jpg";
+        String fileNameBanner = "dautay_resized";
+        uploadFileCMSPage.uploadFile(filePathBanner, fileNameBanner);
+        WebUI.sleep(3);
 
         WebUI.clickElement(iconField);
-        WebUI.setElementText(iconSearchFile, "lake");
-        WebUI.clickElement(iconClickFile);
-        WebUI.clickElement(iconSelectFile);
+        String filePathIcon = Helpers.getCurrentDir() + "src\\test\\java\\haimai\\datatest\\lake.jpg";
+        String fileNameIcon = "lake";
+        uploadFileCMSPage.uploadFile(filePathIcon, fileNameIcon);
+        WebUI.sleep(3);
+//        WebUI.setElementText(iconSearchFile, "lake");
+//        WebUI.clickElement(iconClickFile);
+//        WebUI.clickElement(iconSelectFile);
 
         WebUI.setElementText(metaTitle, "meta title");
         WebUI.setElementText(metaDescription, "meta description");
@@ -74,7 +87,7 @@ public class CategoryPage extends CommonPage {
         WebUI.clickElement(filterAttributesSelect);
 
         WebUI.clickElement(saveButton);
-
+        WebUI.sleep(3);
     }
 
 }

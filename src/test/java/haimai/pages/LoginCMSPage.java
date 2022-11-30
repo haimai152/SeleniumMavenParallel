@@ -22,12 +22,8 @@ public class LoginCMSPage extends CommonPage {
 
 
     public CommonPage logIn(String email, String password) {
-//        WebUI.waitForPageLoaded();
-//        WebUI.waitForElementClickable(popup);
-//        popupClose();
-//        WebUI.waitForElementClickable(loginLinkElement);
-//        clickLoginLink();
         WebUI.openURL("https://demo.activeitzone.com/ecommerce/login");
+        WebUI.waitForPageLoaded();
         enterEmail(email);
         enterPassword(password);
         WebUI.waitForElementClickable(loginButton);
@@ -47,8 +43,8 @@ public class LoginCMSPage extends CommonPage {
         Assert.assertEquals(WebUI.getElementText(errorMsgText), "Invalid login credentials", "Input data is incorrect (Invalid email or password)");
     }
 
-    //Verifylogin cuối khóa
-    public void verifyLogIn_prj(String email, String password, String type) {
+    //Verifylogin final project
+    public CommonPage verifyLogIn_prj(String email, String password, String type) {
         WebUI.openURL("https://demo.activeitzone.com/ecommerce/login");
         enterEmail(email);
         enterPassword(password);
@@ -60,6 +56,8 @@ public class LoginCMSPage extends CommonPage {
         } else {
             Assert.assertEquals(WebUI.getElementText(errorMsgText), "Invalid login credentials", "Input data is incorrect (Invalid email or password)");
         }
+
+        return new CommonPage();
     }
 
     public String getErrorMessage() {
@@ -67,6 +65,7 @@ public class LoginCMSPage extends CommonPage {
         WebElement errorMsg = DriverManagerMe.getDriver().findElement(errorMsgText);
         if (errorMsg.isDisplayed())
             strErrorMsg = errorMsg.getText();
+
         return strErrorMsg;
     }
 
