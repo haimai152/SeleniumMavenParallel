@@ -2,3 +2,4 @@
 allure-results
 .git
 .gitignore
+target
