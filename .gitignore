@@ -1,3 +1,4 @@
 .idea
 allure-results
 .git
+.gitignore
