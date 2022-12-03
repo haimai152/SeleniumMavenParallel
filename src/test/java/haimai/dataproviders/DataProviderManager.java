@@ -59,4 +59,14 @@ public class DataProviderManager {
 
         return data;
     }
+
+    @DataProvider(name = "dataExcelAddCategory", parallel = false)
+    public Object[][] addCategoryData() {
+
+        ExcelHelpers excelHelpers = new ExcelHelpers();
+
+        Object[][] data = excelHelpers.getExcelDataHashTable(Helpers.getCurrentDir() + "src/test/java/haimai/datatest/dataTestProject.xlsx", "addCategory", 1, 1);
+
+        return data;
+    }
 }

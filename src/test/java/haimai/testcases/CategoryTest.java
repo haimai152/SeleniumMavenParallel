@@ -25,4 +25,5 @@ public class CategoryTest extends BaseTestParallel {
         categoryPage.addCategory();
     }
 
+
 }
