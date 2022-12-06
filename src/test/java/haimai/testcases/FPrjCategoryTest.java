@@ -27,7 +27,6 @@ public class FPrjCategoryTest extends BaseTestParallel {
     public void addCategoryExcel(Hashtable<String, String> data) {
         commonPage = loginCMSPage.verifyLogIn_prj(ConstantData.EMAIL, ConstantData.PASSWORD, ConstantData.TYPE);
         fPrjCategoryPage = commonPage.openFPrjCategory();
-        //  fPrjCategoryPage.addCategory(data.get("name"), data.get("parentCat"), data.get("orderingNumber"), data.get("type"), data.get("bannerFilePath"), data.get("iconFilePath"), data.get("metaTitle"), data.get("metaDescription"));
         fPrjCategoryPage.addCategory(data);
     }
 

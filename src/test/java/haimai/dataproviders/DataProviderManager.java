@@ -35,7 +35,7 @@ public class DataProviderManager {
 
         ExcelHelpers excelHelpers = new ExcelHelpers();
 
-        Object[][] data = excelHelpers.getExcelDataHashTable(Helpers.getCurrentDir() + "src/test/java/haimai/datatest/dataTestProject.xlsx", "addBrand", 1, 3);
+        Object[][] data = excelHelpers.getExcelDataHashTable(Helpers.getCurrentDir() + "src/test/java/haimai/datatest/dataTestProject.xlsx", "addBrand", 1, 1);
 
         return data;
     }
@@ -66,6 +66,16 @@ public class DataProviderManager {
         ExcelHelpers excelHelpers = new ExcelHelpers();
 
         Object[][] data = excelHelpers.getExcelDataHashTable(Helpers.getCurrentDir() + "src/test/java/haimai/datatest/dataTestProject.xlsx", "addCategory", 1, 1);
+
+        return data;
+    }
+
+    @DataProvider(name = "dataExcelAddProduct", parallel = false)
+    public Object[][] addProductData() {
+
+        ExcelHelpers excelHelpers = new ExcelHelpers();
+
+        Object[][] data = excelHelpers.getExcelDataHashTable(Helpers.getCurrentDir() + "src/test/java/haimai/datatest/dataTestProject.xlsx", "addProduct", 1, 1);
 
         return data;
     }

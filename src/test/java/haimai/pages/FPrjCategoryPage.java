@@ -1,6 +1,5 @@
 package haimai.pages;
 
-import haimai.dataproviders.DataProviderManager;
 import haimai.helpers.ExcelHelpers;
 import haimai.helpers.Helpers;
 import haimai.utils.WebUI;
@@ -10,8 +9,6 @@ import java.util.Hashtable;
 
 public class FPrjCategoryPage extends CommonPage {
     ExcelHelpers excelHelpers;
-    DataProviderManager dataProviderManager;
-
 
     public FPrjCategoryPage() {
         excelHelpers = new ExcelHelpers();

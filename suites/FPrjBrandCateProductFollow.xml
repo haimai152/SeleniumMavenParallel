@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite Final Project" verbose="1">
+    <test name="Final Project Brand Category Product Follow">
+        <classes>
+            <class name="haimai.testcases.FPrjBrandTest">
+                <methods>
+                    <include name="addBrandExcel"/>
+                </methods>
+            </class>
+            <class name="haimai.testcases.FPrjCategoryTest"/>
+            <class name="haimai.testcases.FPrjProductTest"/>
+        </classes>
+    </test>
+</suite>

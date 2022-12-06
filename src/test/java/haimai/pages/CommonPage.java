@@ -16,6 +16,7 @@ public class CommonPage {
     private ProductPage productPage;
     private FPrjCategoryPage fPrjCategoryPage;
 
+
     private By productMenuItem = By.xpath("//span[normalize-space()='Products']");
     private By addNewProduct = By.xpath("//span[normalize-space()='Add New Product']");
     private By categoryMenuItem = By.xpath("//span[normalize-space()='Category']");
@@ -64,6 +65,11 @@ public class CommonPage {
         WebUI.waitForElementClickable(addNewProduct);
         WebUI.clickElement(addNewProduct);
         return new ProductPage();
+    }
+
+    public FPrjProductPage openFPrjProduct() {
+        clickProductMenu();
+        return new FPrjProductPage();
     }
 
     public ProductPage clickAllProductMenu() {
