@@ -3,3 +3,6 @@ allure-results
 .git
 .gitignore
 target
+VideoRecord
+screenshots
+logs

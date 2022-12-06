@@ -44,7 +44,7 @@ public class FPrjProductPage extends CommonPage {
         WebUI.setElementText(productName, dataPage.get("productName"));
         WebUI.clickElement(categoryClick);
         WebUI.setElementText(categorySearch, dataPage.get("catName"));
-        By categorySelected = By.xpath("//span[normalize-space()='-- " + dataPage.get("catName") + "']");
+        By categorySelected = By.xpath("//span[normalize-space()='---- " + dataPage.get("catName") + "']");
         WebUI.clickElement(categorySelected);
 
         WebUI.clickElement(brandClick);
@@ -58,8 +58,10 @@ public class FPrjProductPage extends CommonPage {
         WebUI.setElementText(unitPriceInput, dataPage.get("unitPrice"));
         WebUI.clearElement(discountClear);
         WebUI.setElementText(discountInput, dataPage.get("discount"));
+        WebUI.clearElement(quantity);
         WebUI.setElementText(quantity, dataPage.get("quantity"));
         WebUI.clickElement(saveButton);
+        WebUI.sleep(5);
     }
 
 }

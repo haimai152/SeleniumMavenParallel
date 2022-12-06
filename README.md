@@ -16,10 +16,15 @@ The website to perform project is https://demo.activeitzone.com/ecommerce/
 final project please focus on those files below and please ignore the rest ones. Thank you!
 
 #Data test: dataTestProject.xlsx
+
 #File for Login feature: FPrjLoginCMSTest.java (LoginCMSPage.java)
+
 #File for Brand Management (Add, Edit, Delete): FPrjBrandTest.java (FPrjBrandPage.java)
+
 #File for Category (Add): FPrjCategoryTest.java (FPrjCategoryPage.java)
+
 #File for Product (Add): FPrjProductTest.java (FPrjProductPage.java)
+
 #Run full flow from: Login Admin Page > Add Brand > Add Category > Add Product: FPrjBrandCateProductFollow.xml (Suites)
 
 #NOT DONE YET, WILL BE CONTINUED ... :)
