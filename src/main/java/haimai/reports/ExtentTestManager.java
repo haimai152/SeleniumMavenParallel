@@ -2,6 +2,7 @@ package haimai.reports;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import haimai.driver.DriverManagerMe;
 import org.openqa.selenium.OutputType;
@@ -27,8 +28,10 @@ public class ExtentTestManager {
     public static void addScreenShot(String message) {
         String base64Image = "data:image/png;base64,"
                 + ((TakesScreenshot) DriverManagerMe.getDriver()).getScreenshotAs(OutputType.BASE64);
-        getTest().log(Status.INFO, message,
-                getTest().addScreenCaptureFromBase64String(base64Image).getModel().getMedia().get(0));
+        getTest().log(Status.INFO, MediaEntityBuilder.createScreenCaptureFromBase64String(base64Image).build());
+
+//        getTest().log(Status.INFO, message,
+//                getTest().addScreenCaptureFromBase64String(base64Image).getModel().getMedia().get(0));
     }
 
     public static void addScreenShot(Status status, String message) {

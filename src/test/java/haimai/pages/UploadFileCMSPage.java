@@ -18,7 +18,7 @@ public class UploadFileCMSPage {
     private By menuProducts = By.xpath("//span[normalize-space()='Products']");
     private By menuCategory = By.xpath("//span[normalize-space()='Category']");
     private By butttonAddNewCategory = By.xpath("//span[normalize-space()='Add New category']");
-    private By chooseFile = By.xpath("//label[normalize-space()='Banner (200x200)']/following-sibling::div//div[normalize-space()='Choose file']");
+    private By chooseFile = By.xpath("//label[normalize-space()='Banner (200x200)']/following-sibling::div//div[normalize-space()='Choose File']");
     private By buttonUploadNew = By.xpath("//a[normalize-space()='Upload New']");
     private By buttonBrowse = By.xpath("//button[normalize-space()='Browse']");
     private By buttonAddFiles = By.xpath("//button[normalize-space()='Add Files']");
@@ -68,8 +68,9 @@ public class UploadFileCMSPage {
         rb.keyPress(KeyEvent.VK_CONTROL);
         rb.keyPress(KeyEvent.VK_V);
         // Xác nhận Control V trên
-        rb.keyRelease(KeyEvent.VK_CONTROL);
         rb.keyRelease(KeyEvent.VK_V);
+        rb.keyRelease(KeyEvent.VK_CONTROL);
+
 
         WebUI.sleep(2);
 
@@ -90,7 +91,6 @@ public class UploadFileCMSPage {
 
     public void uploadFile(String filePath, String fileName) {
 
-        //   WebUI.clickElement(chooseFile);
         WebUI.clickElement(buttonUploadNew);
         WebUI.clickElement(buttonBrowse); //Mở form select file từ local PC
         WebUI.sleep(3);
@@ -115,17 +115,16 @@ public class UploadFileCMSPage {
         // Nhấn Control+V để dán
         rb.keyPress(KeyEvent.VK_CONTROL);
         rb.keyPress(KeyEvent.VK_V);
-        // Xác nhận Control V trên
-        rb.keyRelease(KeyEvent.VK_CONTROL);
-        rb.keyRelease(KeyEvent.VK_V);
-
         WebUI.sleep(2);
-
+        // Xác nhận Control V trên
+        rb.keyRelease(KeyEvent.VK_V);
+        rb.keyRelease(KeyEvent.VK_CONTROL);
+        WebUI.sleep(2);
         // Nhấn Enter
         rb.keyPress(KeyEvent.VK_ENTER);
         rb.keyRelease(KeyEvent.VK_ENTER);
-
         WebUI.sleep(3);
+
         WebUI.clickElement(buttonSelectFile);
         WebUI.setElementText(inputSearchFile, fileName);
         WebUI.sleep(1);

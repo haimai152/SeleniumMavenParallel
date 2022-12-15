@@ -7,9 +7,13 @@ import haimai.pages.CommonPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
+
+import java.util.Arrays;
 
 @Listeners(TestListener.class)
 public class BaseTestParallel extends CommonPage {
@@ -53,6 +57,7 @@ public class BaseTestParallel extends CommonPage {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         return driver;
+
     }
 
     private static WebDriver initEdgeDriver() {
