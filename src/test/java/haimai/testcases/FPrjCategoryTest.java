@@ -23,11 +23,11 @@ public class FPrjCategoryTest extends BaseTestParallel {
     }
 
     @Step("dataProviderAddCategory")
-    @Test(priority = 1, dataProvider = "dataExcelAddCategory", dataProviderClass = DataProviderManager.class)
-    public void addCategoryExcel(Hashtable<String, String> data) {
+    @Test(priority = 1, dataProvider = "addCategory", dataProviderClass = DataProviderManager.class)
+    public void addCategory(Hashtable<String, String> data) {
         commonPage = loginCMSPage.verifyLogIn_prj(ConstantData.EMAIL, ConstantData.PASSWORD, ConstantData.TYPE);
         fPrjCategoryPage = commonPage.openFPrjCategory();
-        fPrjCategoryPage.addCategory(data);
+        fPrjCategoryPage.addCategoryPage(data);
     }
 
 

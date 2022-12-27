@@ -24,7 +24,7 @@ public class FPrjBrandTest extends BaseTestParallel {
 
     //Final Project
     @Step("dataProviderAddBrand")
-    @Test(priority = 1, dataProvider = "dataExcelAddBrand", dataProviderClass = DataProviderManager.class)
+    @Test(priority = 1, dataProvider = "addBrand", dataProviderClass = DataProviderManager.class)
     public void addBrandExcel(Hashtable<String, String> data) {
         commonPage = loginCMSPage.verifyLogIn_prj(ConstantData.EMAIL, ConstantData.PASSWORD, ConstantData.TYPE);
         fPrjBrandPage = commonPage.openBrand();
@@ -32,7 +32,7 @@ public class FPrjBrandTest extends BaseTestParallel {
     }
 
     @Step("dataProviderEditBrand")
-    @Test(priority = 2, dataProvider = "dataExcelEditBrand", dataProviderClass = DataProviderManager.class)
+    @Test(priority = 2, dataProvider = "editBrand", dataProviderClass = DataProviderManager.class)
     public void editBrandExcel(Hashtable<String, String> data) {
         commonPage = loginCMSPage.verifyLogIn_prj(ConstantData.EMAIL, ConstantData.PASSWORD, ConstantData.TYPE);
         fPrjBrandPage = commonPage.openBrand();
@@ -41,7 +41,7 @@ public class FPrjBrandTest extends BaseTestParallel {
     }
 
     @Step("dataProviderDelBrand")
-    @Test(priority = 3, dataProvider = "dataExcelDelBrand", dataProviderClass = DataProviderManager.class)
+    @Test(priority = 3, dataProvider = "delBrand", dataProviderClass = DataProviderManager.class)
     public void delBrandExcel(Hashtable<String, String> data) {
         commonPage = loginCMSPage.verifyLogIn_prj(ConstantData.EMAIL, ConstantData.PASSWORD, ConstantData.TYPE);
         fPrjBrandPage = commonPage.openBrand();

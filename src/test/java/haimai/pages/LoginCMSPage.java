@@ -33,7 +33,7 @@ public class LoginCMSPage extends CommonPage {
     }
 
     public void verifyLogIn(String email, String password) {
-        WebUI.openURL("https://demo.activeitzone.com/ecommerce/login");
+        WebUI.openURL("https://cms.anhtester.com/login");
         enterEmail(email);
         enterPassword(password);
         WebUI.waitForElementClickable(loginButton);

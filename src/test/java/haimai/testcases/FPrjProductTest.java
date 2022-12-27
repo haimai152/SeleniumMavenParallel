@@ -23,8 +23,8 @@ public class FPrjProductTest extends BaseTestParallel {
     }
 
     @Step("dataProviderAddProduct")
-    @Test(priority = 1, dataProvider = "dataExcelAddProduct", dataProviderClass = DataProviderManager.class)
-    public void addProductExcel(Hashtable<String, String> data) {
+    @Test(priority = 1, dataProvider = "addProduct", dataProviderClass = DataProviderManager.class)
+    public void addProduct(Hashtable<String, String> data) {
         commonPage = loginCMSPage.verifyLogIn_prj(ConstantData.EMAIL, ConstantData.PASSWORD, ConstantData.TYPE);
         fPrjProductPage = commonPage.openFPrjProduct();
         fPrjProductPage.fPrjAddProduct(data);

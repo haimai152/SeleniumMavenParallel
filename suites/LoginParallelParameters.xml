@@ -5,20 +5,20 @@
     <test name="Regression Parallel CHROME" parallel="methods">
         <parameter name="browser" value="chrome"></parameter>
         <classes>
-            <class name="haimai.testcases.LoginCMSTest"/>
+            <class name="haimai.testcases.FPrjLoginCMSTest"/>
         </classes>
     </test>
 
     <test name="Regression Parallel Firefox" parallel="methods">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
-            <class name="haimai.testcases.LoginCMSTest"/>
+            <class name="haimai.testcases.FPrjLoginCMSTest"/>
         </classes>
     </test>
     <test name="Regression Parallel Edge" parallel="methods">
         <parameter name="browser" value="edge"></parameter>
         <classes>
-            <class name="haimai.testcases.LoginCMSTest"/>
+            <class name="haimai.testcases.FPrjLoginCMSTest"/>
         </classes>
     </test>
 

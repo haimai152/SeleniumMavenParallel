@@ -21,7 +21,7 @@ public class DashboardTest extends BaseTestParallel {
 
     @Test
     public void testLogout() {
-        commonPage = loginCMSPage.logIn(ConstantData.EMAIL, ConstantData.PASSWORD);
+        commonPage = loginCMSPage.verifyLogIn_prj(ConstantData.EMAIL, ConstantData.PASSWORD,ConstantData.TYPE);
         commonPage.logout();
     }
 }

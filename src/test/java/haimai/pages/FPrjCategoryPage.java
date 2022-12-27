@@ -4,6 +4,7 @@ import haimai.helpers.ExcelHelpers;
 import haimai.helpers.Helpers;
 import haimai.utils.WebUI;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import java.util.Hashtable;
 
@@ -24,13 +25,13 @@ public class FPrjCategoryPage extends CommonPage {
     private By typeDigital = By.xpath("//span[normalize-space()='Digital']");
     private By typePhysical = By.xpath("//span[normalize-space()='Physical']");
     private By bannerField = By.xpath("(//div[contains(text(),'Choose File')])[1]");
-    private By chooseFile = By.xpath("//label[normalize-space()='Banner (200x200)']/following-sibling::div//div[normalize-space()='Choose file']");
+    private By chooseFile = By.xpath("//label[normalize-space()='Banner (200x200)']/following-sibling::div//div[normalize-space()='Choose File']");
     private By bannerSearchFile = By.xpath("//input[@placeholder='Search your files']");
     //private By bannerSearchFileEnter = By.xpath("//input[@placeholder='Search your files']");
     private By bannerClickFile = By.xpath("(//div[@class='card-file-thumb'])[1]");
     private By bannerSelectFile = By.xpath("//button[normalize-space()='Add Files']");
     //private By iconField = By.xpath("//div[@class='input-group']//div[normalize-space()='Choose File']");
-    private By iconField = By.xpath("//label[normalize-space()='Icon (32x32)']/following-sibling::div//div[normalize-space()='Choose file']");
+    private By iconField = By.xpath("//label[normalize-space()='Icon (32x32)']/following-sibling::div//div[normalize-space()='Choose File']");
     private By iconSearchFile = By.xpath("//input[@placeholder='Search your files']");
     // private By iconSearchFileEnter = By.xpath("//input[@placeholder='Search your files']");
     private By iconClickFile = By.xpath("(//div[@title='lake.jpg'])[1]");
@@ -41,9 +42,10 @@ public class FPrjCategoryPage extends CommonPage {
     private By filterAttributesSearch = By.xpath("//div[@class='dropdown-menu show']//input[@aria-label='Search']");
     private By filterAttributesSelect = By.xpath("//a[@role='option']//span[normalize-space()='Size']");
     private By saveButton = By.xpath("//button[normalize-space()='Save']");
+    private By searchCategory = By.xpath("//input[@id='search']");
 
 
-    public void addCategory(Hashtable<String, String> data) {
+    public void addCategoryPage(Hashtable<String, String> data) {
         clickAddCategoryButton();
         enterCategoryData(data);
     }
@@ -55,10 +57,13 @@ public class FPrjCategoryPage extends CommonPage {
 
     public void enterCategoryData(Hashtable<String, String> dataPage) {
         WebUI.setElementText(categoryName, dataPage.get("name"));
+
         WebUI.clickElement(parentCategoryField);
         WebUI.setElementText(parentCategorySearch, dataPage.get("parentCat"));
         By parentCatSelected = By.xpath("//span[normalize-space()='" + dataPage.get("parentCat") + "']");
-        WebUI.clickElement(parentCatSelected);
+        boolean parentCateExists = WebUI.checkElementExist(parentCatSelected);
+        if (parentCateExists){WebUI.clickElement(parentCatSelected);}
+
         WebUI.setElementText(orderNumber, dataPage.get("orderingNumber"));
         WebUI.clickElement(typeField);
         if (dataPage.get("type").equals("Digital")) {
@@ -90,6 +95,14 @@ public class FPrjCategoryPage extends CommonPage {
 
         WebUI.clickElement(saveButton);
         WebUI.sleep(3);
+        verifyData(dataPage.get("name"));
     }
-
+    public void verifyData(String name){
+        WebUI.waitForElementClickable(searchCategory);
+        WebUI.setElementText(searchCategory, name);
+        WebUI.pressENTER();
+        By cateNameElement = By.xpath(" //td[normalize-space()='" + name + "']");
+        boolean checkCateName = WebUI.checkElementExist(cateNameElement);
+        Assert.assertTrue(checkCateName, "Fail to add/edit Category");
+    }
 }
