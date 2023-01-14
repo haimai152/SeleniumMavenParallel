@@ -9,7 +9,7 @@ import java.util.Hashtable;
 
 public class FPrjProductPage extends CommonPage {
     ExcelHelpers excelHelpers;
-
+    FPrjCheckAddedProOnUserPage fPrjCheckAddedProOnUserPage;
     public FPrjProductPage() {
         excelHelpers = new ExcelHelpers();
     }
@@ -34,6 +34,8 @@ public class FPrjProductPage extends CommonPage {
     private By quantity = By.xpath("//input[@placeholder='Quantity']");
     private By saveButton = By.xpath("//button[normalize-space()='Save & Publish']");
     private By searchProduct = By.xpath("//input[@id='search']");
+    private By logoutProfile = By.xpath("//span[@class='d-block fw-500']");
+    private By logoutButton = By.xpath("//span[normalize-space()='Logout']");
 
     public void fPrjAddProduct(Hashtable<String, String> dataProduct) {
        // clickAddProduct();
@@ -91,4 +93,12 @@ public class FPrjProductPage extends CommonPage {
         Assert.assertTrue(checkProductName, "Fail to add/edit Product");
     }
 
+    public FPrjCheckAddedProOnUserPage openUserPage() {
+        WebUI.clickElement(logoutProfile);
+        WebUI.clickElement(logoutButton);
+        WebUI.openURL("https://cms.anhtester.com/");
+        WebUI.waitForPageLoaded();
+        //  WebUI.sleep(3);
+        return new FPrjCheckAddedProOnUserPage();
+    }
 }

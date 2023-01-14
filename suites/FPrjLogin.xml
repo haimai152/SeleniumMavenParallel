@@ -2,7 +2,7 @@
 
 <suite name="Suite Final Project" verbose="1">
 
-        <test name="Final Project Login" parallel="methods">
+        <test name="Final Project Login" parallel="classes">
             <parameter name="browser" value="chrome"></parameter>
             <classes>
                 <class name="haimai.testcases.FPrjLoginCMSTest"/>

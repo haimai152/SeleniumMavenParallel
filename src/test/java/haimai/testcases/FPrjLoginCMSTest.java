@@ -22,9 +22,9 @@ public class FPrjLoginCMSTest extends BaseTestParallel {
     } //Truyền driver từ BaseTest sang các class Page
 
     //Final Project
-    @Step("testLoginDataProviderFromExcelByRow")
-    @Test(priority = 1, dataProvider = "data_provider_login_from_excel_by_row", dataProviderClass = DataProviderManager.class)
-    public void testDataProviderLoginExcelByRowPrj(Hashtable<String, String> data) {
+    @Step("loginDataProvider")
+    @Test(priority = 1, dataProvider = "login", dataProviderClass = DataProviderManager.class)
+    public void testDataProviderLogin(Hashtable<String, String> data) {
         loginCMSPage.verifyLogIn_prj(data.get("username"), data.get("password"), data.get("type"));
     }
 }

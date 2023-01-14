@@ -54,6 +54,13 @@ public class CommonPage {
         return new FPrjBrandPage();
     }
 
+//    public FPrjCheckAddedProOnUserPage openUserPage() {
+//        WebUI.clickElement(logoutProfile);
+//        WebUI.clickElement(logoutButton);
+//        WebUI.openURL("https://cms.anhtester.com/");
+//
+//        return new FPrjCheckAddedProOnUserPage();
+//    }
     public LoginCMSPage logout() {
         WebUI.clickElement(logoutProfile);
         WebUI.clickElement(logoutButton);

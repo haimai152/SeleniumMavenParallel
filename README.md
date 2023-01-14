@@ -27,4 +27,9 @@ final project please focus on those files below and please ignore the rest ones.
 
 #Run full flow from: Login Admin Page > Add Brand > Add Category > Add Product: FPrjBrandCateProductFollow.xml (Suites)
 
+#Check detail product on User page that has added from Admin page: run file FPrjCheckAddedProOnUserTest.java
+
+#Run Parallel Execution (Multi browsers: run chrome, firefox, edge with 3 rows data): LoginParallelParameters.xml (Suites)
+
+
 #NOT DONE YET, WILL BE CONTINUED ... :)

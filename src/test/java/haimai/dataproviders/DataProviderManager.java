@@ -6,6 +6,15 @@ import org.testng.annotations.DataProvider;
 
 public class DataProviderManager {
 
+    @DataProvider(name = "login", parallel = false)
+    public Object[][] loginData() {
+
+        ExcelHelpers excelHelpers = new ExcelHelpers();
+
+        Object[][] data = excelHelpers.getExcelDataHashTable(Helpers.getCurrentDir() + "src/test/java/haimai/datatest/logindata.xlsx", "Login", 1, 3);
+
+        return data;
+    }
     @DataProvider(name = "addBrand", parallel = false)
     public Object[][] addBrandData() {
 

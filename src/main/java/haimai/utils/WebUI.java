@@ -221,5 +221,19 @@ public class WebUI {
         }
     }
 
+    public static String splitSpace(String st){
+        String resultSt;
+        String[] argsSpaces;
+        argsSpaces = st.split(" ");
+        resultSt = argsSpaces[0];
+        return resultSt;
+    }
+    public static String splitDot(String st){
+        String resultDotSt;
+        String[] argsDot;
+        argsDot = st.split("/");
+        resultDotSt = argsDot[0];
+        return resultDotSt;
+    }
 
 }
