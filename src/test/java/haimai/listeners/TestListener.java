@@ -2,6 +2,7 @@ package haimai.listeners;
 
 import com.aventstack.extentreports.Status;
 import haimai.helpers.CaptureHelpers;
+import haimai.helpers.PropertiesHelpers;
 import haimai.reports.AllureManager;
 import haimai.reports.ExtentReportManager;
 import haimai.reports.ExtentTestManager;
@@ -22,6 +23,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onStart(ITestContext result) {
+        PropertiesHelpers.loadAllFiles();
         System.out.println("Start Suite: " + result.getStartDate());
         CaptureHelpers.startRecord(result.getName());
     }

@@ -17,14 +17,11 @@ public class PropertiesHelpers {
     public static Properties loadAllFiles() {
         LinkedList<String> files = new LinkedList<>();
         // Add tất cả file Properties vào đây theo mẫu
-
         files.add("src/test/resources/object.properties");
         files.add("src/test/resources/configs.properties");
         files.add("src/test/resources/data.properties");
-
         try {
             properties = new Properties();
-
             for (String f : files) {
                 Properties tempProp = new Properties();
                 linkFile = Helpers.getCurrentDir() + f;
@@ -64,7 +61,7 @@ public class PropertiesHelpers {
     }
 
     public static String getValue(String key) {
-        String keyval = null;
+        String keyVal = null;
         try {
             if (file == null) {
                 properties = new Properties();
@@ -74,11 +71,11 @@ public class PropertiesHelpers {
                 file.close();
             }
             // Lấy giá trị từ file đã Set
-            keyval = properties.getProperty(key);
+            keyVal = properties.getProperty(key);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return keyval;
+        return keyVal;
     }
 
     public static void setValue(String key, String keyValue) {
