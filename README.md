@@ -30,5 +30,4 @@ The website to perform project is https://demo.activeitzone.com/ecommerce/
 
 #Run Parallel Execution (Multi browsers: run chrome, firefox, edge with 3 rows data): LoginParallelParameters.xml (Suites)
 
-
-#NOT DONE YET, WILL BE CONTINUED ... :)
+# Search Product, check Table (Name column): run file CheckSearchProTableTest.java (CheckSearchProTablePage.java)
